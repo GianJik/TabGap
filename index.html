@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SEP</title>
+  <title>▪</title>
   <link id="favicon" rel="icon" type="image/svg+xml" href="">
   <style>
     /* ==========================================
@@ -92,7 +92,7 @@
 <body>
 
   <div class="card">
-    <input type="text" id="titleInput" placeholder="NOME">
+    <input type="text" id="titleInput" placeholder="SIGLA (MAX 3)">
     <div class="palette" id="palette"></div>
     <textarea id="noteInput" placeholder="Nota in anteprima..."></textarea>
   </div>
@@ -102,8 +102,8 @@
        CONFIGURAZIONE APPLICAZIONE (CONFIG)
        ========================================== */
     const CONFIG = {
-      defaultTitle: 'SEP',
-      maxTitleLength: 5,
+      defaultTitle: '▪',
+      maxTitleLength: 3,
       defaultColorIndex: 5,
       colors: [
         '#e74c3c', // Rosso
@@ -178,10 +178,12 @@
       });
     }
 
-    // Inizializzazione
+    /* ==========================================
+       INIZIALIZZAZIONE
+       ========================================== */
     function init() {
       DOM.titleInput.maxLength = CONFIG.maxTitleLength;
-      DOM.titleInput.value = state.title;
+      DOM.titleInput.value = state.title === CONFIG.defaultTitle ? '' : state.title;
       DOM.noteInput.value = state.note;
 
       DOM.titleInput.oninput = (e) => {
